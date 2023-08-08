@@ -28,13 +28,24 @@ function togglePlayPause() {
   if (video.paused || video.ended) {
     video.play();
     playPauseButton.textContent = 'Pause';
+    enterFullscreen();
   } else {
     video.pause();
     playPauseButton.textContent = 'Play';
   }
 }
 
-
+function enterFullscreen() {
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.mozRequestFullScreen) {
+    video.mozRequestFullScreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  }
+}
 
 
 
